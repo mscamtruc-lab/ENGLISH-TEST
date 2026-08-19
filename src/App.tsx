@@ -186,6 +186,12 @@ export default function App() {
     setTests((prev) => [newTest, ...prev]);
   };
 
+  // Import results from Google Drive
+  const handleImportResults = (importedResults: TestResult[]) => {
+    setResults(importedResults);
+    localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify(importedResults));
+  };
+
   return (
     <div className="min-h-screen bg-[#fcf2f2] text-stone-900 flex flex-col font-sans antialiased selection:bg-rose-800 selection:text-white">
       {/* Top Navbar */}
@@ -217,6 +223,7 @@ export default function App() {
             onClearAllResults={handleClearAllResults}
             onRefreshData={fetchBackendData}
             onAddCustomTest={handleAddCustomTest}
+            onImportResults={handleImportResults}
           />
         ) : (
           <>

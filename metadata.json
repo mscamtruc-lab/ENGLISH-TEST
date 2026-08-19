@@ -2,5 +2,7 @@
   "name": "EduEnglish THCS - Kiểm Tra Đánh Giá",
   "description": "Ứng dụng kiểm tra - đánh giá thường xuyên môn Tiếng Anh THCS (Lớp 6-9) với 4 dạng thức trò chơi: Trắc nghiệm, Đúng/Sai, Kéo thả và Điền khuyết kèm bảng theo dõi của giáo viên.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

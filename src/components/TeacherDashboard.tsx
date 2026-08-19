@@ -22,6 +22,7 @@ import {
   Unlock,
 } from 'lucide-react';
 import { TestResult, TestExam, GradeClassification } from '../types';
+import { GoogleDriveManager } from './GoogleDriveManager';
 
 interface TeacherDashboardProps {
   results: TestResult[];
@@ -30,6 +31,7 @@ interface TeacherDashboardProps {
   onClearAllResults: () => void;
   onRefreshData: () => void;
   onAddCustomTest: (test: TestExam) => void;
+  onImportResults?: (importedResults: TestResult[]) => void;
 }
 
 export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
@@ -39,6 +41,7 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
   onClearAllResults,
   onRefreshData,
   onAddCustomTest,
+  onImportResults,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGrade, setSelectedGrade] = useState<string>('all');
@@ -591,6 +594,16 @@ export const TeacherDashboard: React.FC<TeacherDashboardProps> = ({
           </table>
         </div>
       </div>
+
+      {/* Google Drive Cloud Integration Section */}
+      <GoogleDriveManager
+        results={results}
+        tests={tests}
+        onImportResults={(importedResults) => {
+          if (onImportResults) onImportResults(importedResults);
+        }}
+        onImportTest={onAddCustomTest}
+      />
 
       {/* AI Test Generation Modal */}
       {showAiModal && (
